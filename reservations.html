@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Groovy Grill - Reservations</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
   <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
@@ -12,13 +12,13 @@
 <nav class="navbar navbar-inverse" role="banner">
   <div class="container">
     <div class="navbar-header">
-    <a class="navbar-brand" href="index.html"><!--<img src="images/logo.png" alt="logo">-->Groovy Grill</a>
+    <a class="navbar-brand" href="/"><!--<img src="images/logo.png" alt="logo">-->Groovy Grill</a>
     </div>
   <div class="collapse navbar-collapse navbar-right">
     <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="tables.html">Tables</a></li>
-      <li><a href="reservations.html">Reservations</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/tables">Tables</a></li>
+      <li><a href="/reservations">Reservations</a></li>
     </ul>
   </div>
   </div> 
@@ -68,6 +68,28 @@
       </div>
     </div>
   </div> 
+
+   <script type="text/javascript">
+    // Question: What does this code do?
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+
+      var newCharacter = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        id: $("#id").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("/reservations", newReservation)
+      .done(function(data) {
+        console.log(data);
+        alert("Adding reservation...");
+      });
+
+    });
+  </script>
 
 </body>
 </html>
